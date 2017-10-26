@@ -1,4 +1,4 @@
-# LegislativeDiversity
+# Exploring Diversity of State Legislators
 
 
 How does the diversity of legislatures vary across states? (unstructured data analysis)
@@ -17,5 +17,7 @@ How does the diversity of a state's legislature influence:
  
 What is the relationship between diversity in state legislatures and diversity in the state populace?
  
-
+Data sources:
+ * State legislature diversity data are from the [National Conference of State Legislatures](http://www.ncsl.org/research/about-state-legislatures/who-we-elect-an-interactive-graphic.aspx#)
+ * State bill information was scraped from [openstates.org](https://openstates.org/)
  
