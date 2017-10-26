@@ -16,6 +16,9 @@ How does the diversity of a state's legislature influence:
  * Topics of bills (e.g., how many bills are related to criminal justice?)
  
 What is the relationship between diversity in state legislatures and diversity in the state populace?
+
+How does gerrymandering influence legislature diversity? 
+ * Case study with Wisconsin (partisan gerrymander) and North Carolina (racial gerrymander)
  
 Data sources:
  * State legislature diversity data are from the [National Conference of State Legislatures](http://www.ncsl.org/research/about-state-legislatures/who-we-elect-an-interactive-graphic.aspx#)
