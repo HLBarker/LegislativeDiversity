@@ -9,13 +9,16 @@
    * Race (Native American, African American, Asian American, etc.)
    * Religion (Protestant, Catholic, Unspecified)
    * Political offiliation (Democrat, Republican, Other)
+     * Analyses = PCA and heatmap of dissimilarity matrix 
 
 2. How does the diversity of a state's legislature influence:
    * Bill productivity (number of bills in a given session)
    * How many bills are enacted vs. withheld 
    * Topics of bills (e.g., how many bills are related to criminal justice?)
+     * Analysis = regression with diversity metrics as predictors
  
 3. What is the relationship between diversity in state legislatures and diversity in the state populace?
+     * Analysis = multivariate correlation (Procrustes) 
 
 4. How does gerrymandering influence legislature diversity? 
    * Case study with Wisconsin (partisan gerrymander) and North Carolina (racial gerrymander)
