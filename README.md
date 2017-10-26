@@ -15,9 +15,10 @@
    * Bill productivity (number of bills in a given session)
    * How many bills are enacted vs. withheld 
    * Topics of bills (e.g., how many bills are related to criminal justice?)
-     * Analysis = regression with diversity metrics as predictors
+     * Analyses = regression with diversity metrics as predictors
  
 3. What is the relationship between diversity in state legislatures and diversity in the state populace?
+   * Do state legislators reflect the diversity of the populaiton they are supposed to represent?
      * Analysis = multivariate correlation (Procrustes) 
 
 4. How does gerrymandering influence legislature diversity? 
