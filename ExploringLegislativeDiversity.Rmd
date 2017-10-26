@@ -1,0 +1,40 @@
+---
+title: "Diversity in State Legislatures"
+author: "Hilary Barker"
+date: "10/26/2017"
+output: html_document
+---
+
+```{r setup, include=FALSE, warning=FALSE, message=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(corrplot)
+source("~/Documents/R Statistical Database/Numerical Ecology with R/NEwR scripts for MacOS/panelutils.R")
+library(vegan)
+
+div <- read.csv("state_legislative_diversity.csv")
+```
+
+```{r relationships, warning=FALSE, message=FALSE}
+div2 <- div %>% 
+  select(-EDU_NoData, -Pop_female, -NoData_job)
+
+boxplot(div2[ ,-1], use.cols = TRUE)
+# corrplot(div2[ ,-1])
+pairs(div2[ , 2:15], lower.panel = panel.smooth, upper.panel = panel.cor, 
+      method = "pearson", diag.panel = panel.hist, 
+      main = "Bivariate plots with histograms and smooth curves")
+pairs(div2[ , 16:32], lower.panel = panel.smooth, upper.panel = panel.cor, 
+      method = "pearson", diag.panel = panel.hist, 
+      main = "Bivariate plots with histograms and smooth curves")
+```
+
+```{r distance, warning=FALSE, message=FALSE}
+dismat <- as.matrix(vegdist(div2[, -1], method = "euclidean"))
+
+library(colorspace)
+palette <- choose_palette()
+heatmap(dismat, col  = (palette(16)), labCol = div2$States, labRow = div2$States)
+
+```
+
