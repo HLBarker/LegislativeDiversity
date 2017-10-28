@@ -20,7 +20,7 @@ With this project, I plan to investigate the following questions:
    * Race (Native American, African American, Asian American, etc.)
    * Religion (Protestant, Catholic, Unspecified)
    * Political affiliation (Democrat, Republican, Other)
-     * Analyses = I will calculate euclidean distances between pairs of states to determine how similar or different states are to each other in terms of congressional diversity. I will display these data as a clustered heatmap. I will then also plot these data using non-metric multidimensional scaling and overlaid vectors that show how the particular metrics of diversity (e.g., generation) vary across state legislators. Lastly, I will calculate Shannon diversity indices for each state legislature which takes into account both richness (the number of different represented categories, e.g., Protestant, GenX, etc.) and evenness across categories. The Shannon index scores will then be used in subsequent analyses.
+     * Analyses = I will calculate euclidean distances between pairs of states to determine how similar or different states are to each other in terms of congressional diversity. I will display these data as a clustered heatmap. I will then also plot these data using non-metric multidimensional scaling with overlaid vectors that show how the particular metrics of diversity (e.g., generation) vary across state legislators. Lastly, I will calculate Shannon diversity indices for each state legislature which takes into account both richness (the number of different represented categories, e.g., Protestant, GenX, etc.) and evenness across categories. The Shannon index scores will then be used in subsequent analyses.
 
 2. How does the diversity of a state's legislature influence:
    * Bill productivity (number of bills in a given session), voting records (e.g., how many votes are ties?), and how many bills are enacted vs. withheld 
@@ -33,7 +33,7 @@ With this project, I plan to investigate the following questions:
  
 3. What is the relationship between diversity in state legislatures and diversity in the state populace?
    * Do state legislators reflect the diversity of the population they are supposed to represent?
-     * Analysis = I will use multivariate correlation (Procrustes) to determine how much of the variation in diversity in the state populace is explained by the diversity in the state legislatures. I will also use euclidean distance to determine how different these two populations are from each other.
+     * Analysis = I will use multivariate correlation (Procrustes) to determine how much of the variation in diversity in the state legislatures is explained by the diversity in the state populace. I will also use euclidean distance to determine how different these two populations are from each other across states.
 
 4. How does gerrymandering influence legislature diversity? 
    * Case study with Wisconsin (partisan gerrymander) and North Carolina (racial gerrymander)
