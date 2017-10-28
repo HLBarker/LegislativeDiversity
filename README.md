@@ -25,13 +25,13 @@ Propose a project that uses a large, publicly accessible dataset. Explain your m
    * Race (Native American, African American, Asian American, etc.)
    * Religion (Protestant, Catholic, Unspecified)
    * Political affiliation (Democrat, Republican, Other)
-     * Analyses = I will calculate euclidean distances between pairs of states to determine how similar or different states are to each other in terms of congressional diversity. I will display these data as a clustered heatmap. I will then also plot these data using non-metric multidimensional scaling and overlaid vectors that show how the particular metrics of diversity (e.g., generation) vary across state legislators. Lastly, I will calculate Shannon diversity indices for each state legislature which takes into account both richness (the number of different represented categories, e.g., Protestant, GenX, etc.) and evenness across categories.
+     * Analyses = I will calculate euclidean distances between pairs of states to determine how similar or different states are to each other in terms of congressional diversity. I will display these data as a clustered heatmap. I will then also plot these data using non-metric multidimensional scaling and overlaid vectors that show how the particular metrics of diversity (e.g., generation) vary across state legislators. Lastly, I will calculate Shannon diversity indices for each state legislature which takes into account both richness (the number of different represented categories, e.g., Protestant, GenX, etc.) and evenness across categories. The Shannon index scores will then be used in subsequent analyses.
 
 2. How does the diversity of a state's legislature influence:
-   * Bill productivity (number of bills in a given session)
-   * How many bills are enacted vs. withheld 
-   * Topics of bills (e.g., how many bills are related to criminal justice?)
-     * Text analyses = can we predict legislator diversity based on bill text?
+   * Bill productivity (number of bills in a given session), voting records (e.g., how many votes are ties?), and how many bills are enacted vs. withheld 
+     * Analyses = I will perform regression analysis with the fine-scaled diversity metrics and Shannon index as predictor variables. 
+   * Topics/text of bills 
+     * Text analyses = I will investigate shared word frequency with correlations between pairs of state legislatures that are more similar or more different in diversity based on the above euclidean distances. These tests will help determine whether two state legislatures that are more or less similar in terms of diversity also have more or less similar bill text. I will also create n-gram networks for the text of bills from state legislatures that are at the diversity extremes based on their Shannon index values. To help tease apart the effects of fine-scale and party diversity, I will rerun these analyses 
      * Secondary questions:
        * Can we predict bill enactment based on bill text?
        * Can we predict party authorship (Republican, Democrat, other) based on bill text?
