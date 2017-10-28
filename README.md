@@ -1,5 +1,8 @@
 # Exploring Diversity of State Legislators
 
+What are the signatures of legislator diversity within legislation? While we typically consider differences in political affiliation  among elected officials in Congress, I predict that legislature diversity at a finer-scale (e.g., age differences, male to female ratio, differences in occupation, race, religious beliefs, etc.) will also influence legislative products: the text, voting, and enactment of bills. group dynamics and writing for the audience
+
+
 
 1. How does the diversity of legislatures vary across states? (unstructured data analysis)
    * Generation (Millenials, GenX, Boomers, Silent, and Greatest)
@@ -8,14 +11,17 @@
    * Occupation (agriculture, business, attorney, etc.)
    * Race (Native American, African American, Asian American, etc.)
    * Religion (Protestant, Catholic, Unspecified)
-   * Political offiliation (Democrat, Republican, Other)
-     * Analyses = heatmap of dissimilarity matrix 
+   * Political affiliation (Democrat, Republican, Other)
+     * Analyses = heatmap of dissimilarity matrix, Shannon index of diversity
 
 2. How does the diversity of a state's legislature influence:
    * Bill productivity (number of bills in a given session)
    * How many bills are enacted vs. withheld 
    * Topics of bills (e.g., how many bills are related to criminal justice?)
-     * Analyses = regression with diversity metrics as predictors
+     * Text analyses = can we predict legislator diversity based on bill text?
+     * Secondary questions:
+       * Can we predict bill enactment based on bill text?
+       * Can we predict party authorship (Republican, Democrat, other) based on bill text?
  
 3. What is the relationship between diversity in state legislatures and diversity in the state populace?
    * Do state legislators reflect the diversity of the population they are supposed to represent?
