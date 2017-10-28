@@ -42,5 +42,5 @@ With this project, I plan to investigate the following questions:
 Data sources:
    * State legislature diversity data are from the [National Conference of State Legislatures](http://www.ncsl.org/research/about-state-legislatures/who-we-elect-an-interactive-graphic.aspx#)
    * State bill information was scraped from [openstates.org](https://openstates.org/)
-   * Wisconsin and North Carolina 2006 legislature diversity information was collected from Wikipedia, VoteSmart, and Ballotpedia
+
  
