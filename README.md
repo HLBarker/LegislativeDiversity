@@ -6,11 +6,11 @@ For instance, the proportion of women in Congress may influence the number of bi
 
 While, I acknowledge that political affiliation and diversity are most likely linked (e.g., people of color are more likely Democrat), I still predict that finer-scaled diversity should have a noticeable influence on bill text, voting, and enactment. I propose to study the effects of both diversity in party affiliation and fine-scaled diversity on legislation to tease apart these two factors.
 
-I am interested in this topic, because as an educator I know the importance of group dynamics and how much these dynamics can shift with the addition or subtraction of just one person. 
+I am interested in this topic, because as an educator I know the importance of group dynamics and how much these dynamics can shift with the addition or subtraction of just one person. Thus, I find the group dynamics of Congress fascinating! How does this group of people who are supposed to represent their constituents interact with each other and work with or against each other? Since, particular person-to-person interactions are not easy to assess, I think mining publicly available information on Congressional products (e.g., bill text, voting records, etc.) can act as a proxy measure for these group dynamics. I also find this interesting because the diversity among Congressmen and women rarely represent their constituents. Thus, how does this influence their work? Are Congresses that more closely resemble their constituents more productive, for instance?
 
-Thus, I find the group dynamics of Congress fascinating! How does this group of people who are supposed to represent their constituents interact with each other and work with or against each other? Since, particular person-to-person interactions are not easy to assess, I think mining publicly available information on Congressional products (e.g., bill text, voting records, etc.) can act as a proxy measure for these group dynamics. I also find this interesting because the diversity among Congressmen and women rarely represent their constituents. Thus, how does this influence their work? Are Congresses that more closely resemble their constituents more productive, for instance?
+To shed light on these questions, I am exploring 2015 congressional data across all 50 states. I have collected diversity metrics for each state Congress (e.g, proportion of representatives and senators that are women) from the [National Conference of State Legislatures](http://www.ncsl.org/research/about-state-legislatures/who-we-elect-an-interactive-graphic.aspx#). For this pilot study, I have also collected short summaries of all of the bills that were presented in the regular 2015-16 congressional sessions for a subset of states with varying legislature diversity. These data were scraped from [openstates.org](https://openstates.org/).
 
-To shed light on these questions, I am exploring congressional data 
+With this project, I plan to investigate the following questions:
 
 
 
@@ -25,7 +25,7 @@ Propose a project that uses a large, publicly accessible dataset. Explain your m
    * Race (Native American, African American, Asian American, etc.)
    * Religion (Protestant, Catholic, Unspecified)
    * Political affiliation (Democrat, Republican, Other)
-     * Analyses = heatmap of dissimilarity matrix, Shannon index of diversity
+     * Analyses = I will calculate euclidean distances between pairs of states to determine how similar or different states are to each other in terms of congressional diversity. I will display these data as a clustered heatmap. I will then also plot these data using non-metric multidimensional scaling and overlaid vectors that show how the particular metrics of diversity (e.g., generation) vary across state legislators. Lastly, I will calculate Shannon diversity indices for each state legislature which takes into account both richness (the number of different represented categories, e.g., Protestant, GenX, etc.) and evenness across categories.
 
 2. How does the diversity of a state's legislature influence:
    * Bill productivity (number of bills in a given session)
