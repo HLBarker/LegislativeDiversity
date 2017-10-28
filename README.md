@@ -12,7 +12,7 @@ To shed light on these questions, I am exploring 2015 congressional data across 
 
 With this project, I plan to investigate the following questions:
 
-1. How does the diversity of legislatures vary across states? (unstructured data analysis)
+1. How does the diversity (using metrics shown below) of legislatures vary across states? 
    * Generation (Millenials, GenX, Boomers, Silent, and Greatest)
    * Male:Female
    * Education level (high school, bachelors, advanced)
@@ -33,10 +33,11 @@ With this project, I plan to investigate the following questions:
  
 3. What is the relationship between diversity in state legislatures and diversity in the state populace?
    * Do state legislators reflect the diversity of the population they are supposed to represent?
-     * Analysis = multivariate correlation (Procrustes) 
+     * Analysis = I will use multivariate correlation (Procrustes) to determine how much of the variation in diversity in the state populace is explained by the diversity in the state legislatures. I will also use euclidean distance to determine how different these two populations are from each other.
 
 4. How does gerrymandering influence legislature diversity? 
    * Case study with Wisconsin (partisan gerrymander) and North Carolina (racial gerrymander)
+     * I will collect congressional information from 2008 (before gerrymandering events) and compare this with the 2015 diversity data. I can calculate Shannon index values and euclidean distances to see how the diversity in the state's legislature may have changed before and after gerrymandering.
  
 Data sources:
    * State legislature diversity data are from the [National Conference of State Legislatures](http://www.ncsl.org/research/about-state-legislatures/who-we-elect-an-interactive-graphic.aspx#)
