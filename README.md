@@ -39,7 +39,7 @@ With this project, I plan to investigate the following questions:
    * Case study with Wisconsin (partisan gerrymander) and North Carolina (racial gerrymander)
      * I will collect congressional information from 2008 (before gerrymandering events) and compare this with the 2015 diversity data. I can calculate Shannon index values and euclidean distances to see how the diversity in the state's legislature may have changed before and after gerrymandering.
  
-Data sources:
+Data sources (for the pilot study):
    * State legislature diversity data are from the [National Conference of State Legislatures](http://www.ncsl.org/research/about-state-legislatures/who-we-elect-an-interactive-graphic.aspx#)
    * State bill information was scraped from [openstates.org](https://openstates.org/)
 
