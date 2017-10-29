@@ -72,9 +72,23 @@ dimnames(div.vec2$vectors$arrows)[[1]] <- c("Advanced degree", "Female", "GenX",
                                             "Minorities", "White", "Protestant", 
                                             "Non Christian", "Unspecified religion")
                                             
+div2["shannon_index"] <- diversity(div2[ ,-1], index = "shannon", MARGIN = 1)
 shan_div <- diversity(div2[ ,-1], index = "shannon", MARGIN = 1)
+data.frame((shan_div))
+shan_div$State <- div2$States
+shan_div$Abbrev <- abbrev_state$text
+
+
+
 rbPal <- colorRampPalette(c("red", "blue"))
 div_col <- rbPal(10)[as.numeric(cut(shan_div, breaks = 10))]
+
+shan_div2 <- div2 %>% 
+  select(States, shannon_index)
+shan_div2$Abbrev <- abbrev_state$text
+write.csv(shan_div2, "shannon_div_state.csv")
+
+shan_div2 <- arrange(shan_div2, shan_div2$shannon_index)
 ```
 
 
