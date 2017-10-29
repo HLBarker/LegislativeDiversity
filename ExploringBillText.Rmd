@@ -66,7 +66,8 @@ state_diversity$statelower <- tolower(state_diversity$States)
 p <- ggplot(state_diversity, aes(map_id = state_diversity$statelower)) + 
   # map points to the fifty_states shape data
   geom_map(aes(fill = state_diversity$shannon_index), map = fifty_states) + 
-  scale_fill_gradient(low = "red", high = "blue") +
+  scale_fill_gradient(low = "red", high = "blue", guide = guide_legend(
+    title = "Diversity")) +
   expand_limits(x = fifty_states$long, y = fifty_states$lat) +
   coord_map() +
   scale_x_continuous(breaks = NULL) + 
