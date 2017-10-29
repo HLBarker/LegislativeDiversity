@@ -81,7 +81,7 @@ div_col <- rbPal(10)[as.numeric(cut(shan_div, breaks = 10))]
 ```{r nmds plot, warning = FALSE, message = FALSE, fig.height = 9, fig.width = 10, fig.align = "center", echo = FALSE}
 
 {plot(mds, type = "n") # make an empty NMDS plot
-text(mds.point, label = abbrev_state$text, cex = 1.5, col = div_col) # Add the NMDS points for each site
+text(mds.point, label = abbrev_state$text, cex = 1.3, col = div_col) # Add the NMDS points for each site
   # and label them as the site number (1-30)
 plot(div.vec2, cex = 1, col = rgb(0,0,0, alpha = 0.5))}
 
