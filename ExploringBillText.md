@@ -1,3 +1,3 @@
-![](ExploringBillText_files/figure-markdown_github/diverse%20bigram%20graph-1.png)
+<img src="ExploringBillText_files/figure-markdown_github/diverse bigram graph-1.png" style="display: block; margin: auto;" />
 
-![](ExploringBillText_files/figure-markdown_github/not%20diverse%20bigram%20graph-1.png)
+<img src="ExploringBillText_files/figure-markdown_github/not diverse bigram graph-1.png" style="display: block; margin: auto;" />

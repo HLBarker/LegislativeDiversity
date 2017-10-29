@@ -57,7 +57,7 @@ bigram_graph_notdiverse <- text_network(notdiverse)
 
 ```
 
-```{r diverse bigram graph, echo = FALSE, warning = FALSE, message = FALSE}
+```{r diverse bigram graph, echo = FALSE, warning = FALSE, message = FALSE, fig.height = 10, fig.width = 10, fig.align = "center"}
 set.seed(2016)
 
 a <- grid::arrow(type = "closed", length = unit(.15, "inches"))
@@ -72,7 +72,7 @@ ggraph(bigram_graph_diverse, layout = "fr") +
 ```
 
 
-```{r not diverse bigram graph, echo = FALSE, warning = FALSE, message = FALSE}
+```{r not diverse bigram graph, echo = FALSE, warning = FALSE, message = FALSE, fig.height = 10, fig.width = 10, fig.align = "center"}
 set.seed(2016)
 
 a <- grid::arrow(type = "closed", length = unit(.15, "inches"))
