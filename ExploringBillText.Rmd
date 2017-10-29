@@ -1,0 +1,89 @@
+---
+title: "ExploringBillText"
+author: "Hilary Barker"
+date: "10/29/2017"
+output:
+  md_document:
+    variant: markdown_github
+---
+
+```{r setup, include = FALSE, warning = FALSE, message = FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(tidytext)
+library(igraph)
+library(ggraph)
+
+bill_text <- as_tibble(read.csv("scraped_bill_data.csv"))
+
+bill_text$text <- as.character(bill_text$text) 
+data("stop_words")
+bill_stop_words <- tibble(word = c("relative", "relating", "tca"), lexicon = c("Bill", "Bill", "Bill"))
+bill_stop_words
+
+stop_words2 <- bind_rows(stop_words, bill_stop_words)
+
+
+diverse <- bill_text %>% 
+  filter(ShanDiv == 1)
+  
+notdiverse <- bill_text %>% 
+  filter(ShanDiv == 0)
+
+text_network <- function(data){
+  bill_bigrams <- data %>% 
+  unnest_tokens(bigram, text, token = "ngrams", n = 2) 
+
+bigrams_separated <- bill_bigrams %>%
+  separate(bigram, c("word1", "word2"), sep = " ")
+
+bigrams_filtered <- bigrams_separated %>%
+  filter(!word1 %in% stop_words2$word) %>%
+  filter(!word2 %in% stop_words2$word)
+
+bigram_counts <- bigrams_filtered %>% 
+  dplyr::count(word1, word2, sort = TRUE)
+
+bigrams_united <- bigrams_filtered %>%
+  unite(bigram, word1, word2, sep = " ")
+
+bigram_counts %>%
+  filter(n > 20) %>%
+  graph_from_data_frame()
+}
+
+bigram_graph_diverse <- text_network(diverse)
+bigram_graph_notdiverse <- text_network(notdiverse)
+
+```
+
+```{r diverse bigram graph, echo = FALSE, warning = FALSE, message = FALSE}
+set.seed(2016)
+
+a <- grid::arrow(type = "closed", length = unit(.15, "inches"))
+
+ggraph(bigram_graph_diverse, layout = "fr") +
+  geom_edge_link(aes(edge_alpha = n), show.legend = FALSE,
+                 arrow = a, end_cap = circle(.07, 'inches')) +
+  geom_node_point(color = "lightblue", size = 5) +
+  geom_node_text(aes(label = name), vjust = 1, hjust = 1) +
+  theme_void()
+
+```
+
+
+```{r not diverse bigram graph, echo = FALSE, warning = FALSE, message = FALSE}
+set.seed(2016)
+
+a <- grid::arrow(type = "closed", length = unit(.15, "inches"))
+
+ggraph(bigram_graph_notdiverse, layout = "fr") +
+  geom_edge_link(aes(edge_alpha = n), show.legend = FALSE,
+                 arrow = a, end_cap = circle(.07, 'inches')) +
+  geom_node_point(color = "lightblue", size = 5) +
+  geom_node_text(aes(label = name), vjust = 1, hjust = 1) +
+  theme_void()
+
+```
+
+

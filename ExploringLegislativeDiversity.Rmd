@@ -10,8 +10,6 @@ output:
 ```{r setup, include = FALSE, warning = FALSE, message = FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 library(tidyverse)
-library(corrplot)
-source("~/Documents/R Statistical Database/Numerical Ecology with R/NEwR scripts for MacOS/panelutils.R")
 library(vegan)
 
 div <- read.csv("state_legislative_diversity.csv")
