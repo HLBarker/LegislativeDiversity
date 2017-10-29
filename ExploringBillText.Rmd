@@ -30,7 +30,7 @@ diverse <- bill_text %>%
 notdiverse <- bill_text %>% 
   filter(ShanDiv == 0)
 
-text_network <- function(data){
+text_network <- function(data, num){
   bill_bigrams <- data %>% 
   unnest_tokens(bigram, text, token = "ngrams", n = 2) 
 
@@ -48,12 +48,12 @@ bigrams_united <- bigrams_filtered %>%
   unite(bigram, word1, word2, sep = " ")
 
 bigram_counts %>%
-  filter(n > 20) %>%
+  filter(n > num) %>%
   graph_from_data_frame()
 }
 
-bigram_graph_diverse <- text_network(diverse)
-bigram_graph_notdiverse <- text_network(notdiverse)
+bigram_graph_diverse <- text_network(diverse, 20)
+bigram_graph_notdiverse <- text_network(notdiverse, 40)
 
 ```
 
