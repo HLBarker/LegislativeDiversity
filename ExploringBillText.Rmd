@@ -18,7 +18,7 @@ bill_text <- as_tibble(read.csv("scraped_bill_data.csv"))
 
 bill_text$text <- as.character(bill_text$text) 
 data("stop_words")
-bill_stop_words <- tibble(word = c("relative", "relating", "tca"), lexicon = c("Bill", "Bill", "Bill"))
+bill_stop_words <- tibble(word = c("relative", "relating", "tca", "West", "Virginia", "Tennessee", "New", "Mexico", "Maryland", "Hampshire", "Arizona"), lexicon = "Bill")
 bill_stop_words
 
 stop_words2 <- bind_rows(stop_words, bill_stop_words)
