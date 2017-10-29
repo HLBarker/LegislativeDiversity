@@ -2,10 +2,12 @@
 title: "Diversity in State Legislatures"
 author: "Hilary Barker"
 date: "10/26/2017"
-output: html_document
+output:
+  md_document:
+    variant: markdown_github
 ---
 
-```{r setup, include=FALSE, warning=FALSE, message=FALSE}
+```{r setup, include = FALSE, warning = FALSE, message = FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 library(tidyverse)
 library(corrplot)
@@ -16,37 +18,31 @@ div <- read.csv("state_legislative_diversity.csv")
 abbrev_state <- read.csv("state_abbreviations.csv")
 ```
 
-```{r relationships, warning=FALSE, message=FALSE}
+```{r relationships, include = FALSE, warning = FALSE, message = FALSE}
 div2 <- div %>% 
   select(-EDU_NoData, -Pop_female, -NoData_job, -Male) %>% 
   filter(States != "Puerto Rico")
 
 boxplot(div2[ ,-1], use.cols = TRUE)
-# corrplot(div2[ ,-1])
-pairs(div2[ , 2:10], lower.panel = panel.smooth, upper.panel = panel.cor, 
-      method = "pearson", diag.panel = panel.hist, 
-      main = "Bivariate plots with histograms and smooth curves")
-pairs(div2[ , 16:32], lower.panel = panel.smooth, upper.panel = panel.cor, 
-      method = "pearson", diag.panel = panel.hist, 
-      main = "Bivariate plots with histograms and smooth curves")
+
+
 ```
 
-```{r distance, warning=FALSE, message=FALSE}
+```{r distance, warning = FALSE, message = FALSE, fig.height = 10, fig.width = 10, fig.align = "center", echo = FALSE}
 dismat <- as.matrix(vegdist(div2[, -1], method = "euclidean"))
 
 library(colorspace)
 # palette <- choose_palette()
 palette <- diverge_hcl(16, h = c(260, 0), c = 80, l = c(30, 90), p = 1.5)
-heatmap(dismat, col  = palette, labCol = abbrev_state$text, labRow = abbrev_state$text, Colv = NA, Rowv = NA, cexRow = 0.5, cexCol = 0.5)
 
 heatmap(dismat, col  = palette, labCol = abbrev_state$text, labRow = abbrev_state$text, 
-        cexRow = 0.5, cexCol = 0.5)
+        cexRow = 0.9, cexCol = 0.9)
 
 
 ```
 
 
-```{r nmds, warning=FALSE, message=FALSE}
+```{r nmds, warning=FALSE, message=FALSE, include = FALSE}
 mds <- metaMDS(dismat, k = 2, try = 20, trymax = 20)
 mds.point <- as.data.frame(mds$points)
 div.vec <- envfit(mds ~ div2$EDU_LessThanBachelors + div2$EDU_Bachelors + div2$EDU_Advanced +
@@ -79,12 +75,15 @@ dimnames(div.vec2$vectors$arrows)[[1]] <- c("Advanced degree", "Female", "GenX",
 shan_div <- diversity(div2[ ,-1], index = "shannon", MARGIN = 1)
 rbPal <- colorRampPalette(c("red", "blue"))
 div_col <- rbPal(10)[as.numeric(cut(shan_div, breaks = 10))]
+```
 
+
+```{r nmds plot, warning = FALSE, message = FALSE, fig.height = 9, fig.width = 10, fig.align = "center", echo = FALSE}
 
 {plot(mds, type = "n") # make an empty NMDS plot
-text(mds.point, label = abbrev_state$text, cex = 1, col = div_col) # Add the NMDS points for each site
+text(mds.point, label = abbrev_state$text, cex = 1.5, col = div_col) # Add the NMDS points for each site
   # and label them as the site number (1-30)
-plot(div.vec2, cex = 1, col = 208)}
+plot(div.vec2, cex = 1, col = rgb(0,0,0, alpha = 0.5))}
 
 
 
