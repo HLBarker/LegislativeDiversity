@@ -13,15 +13,17 @@ source("~/Documents/R Statistical Database/Numerical Ecology with R/NEwR scripts
 library(vegan)
 
 div <- read.csv("state_legislative_diversity.csv")
+abbrev_state <- read.csv("state_abbreviations.csv")
 ```
 
 ```{r relationships, warning=FALSE, message=FALSE}
 div2 <- div %>% 
-  select(-EDU_NoData, -Pop_female, -NoData_job)
+  select(-EDU_NoData, -Pop_female, -NoData_job, -Male) %>% 
+  filter(States != "Puerto Rico")
 
 boxplot(div2[ ,-1], use.cols = TRUE)
 # corrplot(div2[ ,-1])
-pairs(div2[ , 2:15], lower.panel = panel.smooth, upper.panel = panel.cor, 
+pairs(div2[ , 2:10], lower.panel = panel.smooth, upper.panel = panel.cor, 
       method = "pearson", diag.panel = panel.hist, 
       main = "Bivariate plots with histograms and smooth curves")
 pairs(div2[ , 16:32], lower.panel = panel.smooth, upper.panel = panel.cor, 
@@ -33,8 +35,58 @@ pairs(div2[ , 16:32], lower.panel = panel.smooth, upper.panel = panel.cor,
 dismat <- as.matrix(vegdist(div2[, -1], method = "euclidean"))
 
 library(colorspace)
-palette <- choose_palette()
-heatmap(dismat, col  = (palette(16)), labCol = div2$States, labRow = div2$States)
+# palette <- choose_palette()
+palette <- diverge_hcl(16, h = c(260, 0), c = 80, l = c(30, 90), p = 1.5)
+heatmap(dismat, col  = palette, labCol = abbrev_state$text, labRow = abbrev_state$text, Colv = NA, Rowv = NA, cexRow = 0.5, cexCol = 0.5)
+
+heatmap(dismat, col  = palette, labCol = abbrev_state$text, labRow = abbrev_state$text, 
+        cexRow = 0.5, cexCol = 0.5)
+
 
 ```
 
+
+```{r nmds, warning=FALSE, message=FALSE}
+mds <- metaMDS(dismat, k = 2, try = 20, trymax = 20)
+mds.point <- as.data.frame(mds$points)
+div.vec <- envfit(mds ~ div2$EDU_LessThanBachelors + div2$EDU_Bachelors + div2$EDU_Advanced +
+                    div2$Female + div2$Millenials_Gen + div2$GenX_Gen + div2$Boomers_Gen +
+                    div2$Silent_Gen + div2$Greatest_Gen + div2$Agriculture + div2$Attorney +
+                    div2$BusinessOwner + div2$BusinessOther + div2$Educator +
+                    div2$Consult_Nonprofit_Professional + div2$Legislator + div2$Retired +
+                    div2$Other_job + div2$NativeAmerican + div2$Asian_PacIsl +
+                    div2$Black_AfAmer + div2$Hisp_Latino + div2$Multiracial_Other +
+                    div2$Total_minorities + div2$White_Caucasian + div2$Protestant +
+                    div2$Catholic + div2$OtherChristian + div2$NonChristian +
+                    div2$Unspecified_Religion,
+                  permutations = 999, srata = NULL)
+# only include significant terms
+div.vec2 <- envfit(mds ~ div2$EDU_Advanced +
+                    div2$Female + div2$GenX_Gen + div2$Boomers_Gen +
+                    div2$Agriculture + div2$Attorney +
+                    div2$BusinessOwner +
+                    div2$Total_minorities + div2$White_Caucasian + div2$Protestant +
+                    div2$NonChristian +
+                    div2$Unspecified_Religion,
+                  permutations = 999, srata = NULL)
+
+str(div.vec2$vectors$arrows)
+dimnames(div.vec2$vectors$arrows)[[1]] <- c("Advanced degree", "Female", "GenX", "Boomers",
+                                            "Agriculture", "Attorney", "Business owner", 
+                                            "Minorities", "White", "Protestant", 
+                                            "Non Christian", "Unspecified religion")
+                                            
+shan_div <- diversity(div2[ ,-1], index = "shannon", MARGIN = 1)
+rbPal <- colorRampPalette(c("red", "blue"))
+div_col <- rbPal(10)[as.numeric(cut(shan_div, breaks = 10))]
+
+
+{plot(mds, type = "n") # make an empty NMDS plot
+text(mds.point, label = abbrev_state$text, cex = 1, col = div_col) # Add the NMDS points for each site
+  # and label them as the site number (1-30)
+plot(div.vec2, cex = 1, col = 208)}
+
+
+
+
+```
