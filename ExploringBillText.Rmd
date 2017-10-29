@@ -13,7 +13,9 @@ library(tidyverse)
 library(tidytext)
 library(igraph)
 library(ggraph)
+library(fiftystater)
 
+state_diversity <- as_tibble(read.csv("shannon_div_state.csv"))
 bill_text <- as_tibble(read.csv("scraped_bill_data.csv"))
 
 bill_text$text <- as.character(bill_text$text) 
@@ -54,6 +56,25 @@ bigram_counts %>%
 
 bigram_graph_diverse <- text_network(diverse, 20)
 bigram_graph_notdiverse <- text_network(notdiverse, 40)
+
+```
+
+```{r diversity map, echo = FALSE, warning = FALSE, message = FALSE, fig.height = 10, fig.width = 10, fig.align = "center"}
+
+state_diversity$statelower <- tolower(state_diversity$States)
+
+p <- ggplot(state_diversity, aes(map_id = state_diversity$statelower)) + 
+  # map points to the fifty_states shape data
+  geom_map(aes(fill = state_diversity$shannon_index), map = fifty_states) + 
+  scale_fill_gradient(low = "red", high = "blue") +
+  expand_limits(x = fifty_states$long, y = fifty_states$lat) +
+  coord_map() +
+  scale_x_continuous(breaks = NULL) + 
+  scale_y_continuous(breaks = NULL) +
+  labs(x = "", y = "") +
+  theme(legend.position = "bottom", 
+        panel.background = element_blank())
+p
 
 ```
 
