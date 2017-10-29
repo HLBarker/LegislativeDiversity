@@ -15,18 +15,7 @@ abbrev3 <- abbrev2[even_indexes,2]
 
 write.csv(abbrev3, "state_abbreviations.csv")
 
-
-
-# create list of websites to scrape bill info
-websites <- vector("list", 100)
-
-for(i in 1:100) {
-  websites[[i]] <- paste("https://openstates.org/de/bills/?search_text=&chamber=&session=148&type=bill&sponsor__leg_id=&page=", i, sep = "")
-}
-
-websites[[1]] <- "https://openstates.org/de/bills/?search_text=&session=148&chamber=&sponsor__leg_id=&type=bill"
-
-# function for extracting bill topics
+# function for extracting bill summaries
 topic <- function(website) {
   name <- read_html(website)
   data1 <- name %>% 
@@ -35,8 +24,20 @@ topic <- function(website) {
   data2 <- data_frame(line = 1:10, text = data1)
 }
 
-topic_data <- lapply(websites[1:3], function(x) topic(x))
-topic_data_df <- as_data_frame(ldply(topic_data, data.frame))
+
+# create list of websites to scrape bill info
+nm_websites <- vector("list", 135)
+
+for(i in 1:135) {
+  nm_websites[[i]] <- paste("https://openstates.org/nm/bills/?chamber=&session=2015&type=bill&search_text=&sponsor__leg_id=&page=", i, sep = "")
+}
+
+nm_websites[[1]] <- "https://openstates.org/nm/bills/?search_text=&session=2015&chamber=&sponsor__leg_id=&type=bill"
+
+topic_data_nm <- lapply(nm_websites, function(x) topic(x))
+topic_data_df_nm <- as_data_frame(ldply(topic_data, data.frame))
+
+
 
 # function for extracting bill actions
 action <- function(website){
