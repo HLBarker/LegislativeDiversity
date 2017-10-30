@@ -59,6 +59,8 @@ bigram_graph_notdiverse <- text_network(notdiverse, 40)
 
 ```
 
+# Exploring differences in bill text: do more diverse state legislatures propose different kinds of legislation?
+
 ```{r diversity map, echo = FALSE, warning = FALSE, message = FALSE, fig.height = 10, fig.width = 10, fig.align = "center"}
 
 state_diversity$statelower <- tolower(state_diversity$States)
@@ -79,6 +81,10 @@ p
 
 ```
 
+## Figure 1.
+
+Map of differences in Shannon diversity across state legislatures in 2015. Red represents low diversity and blue is high diversity. It is interesting to note that differences in legislature diversity do not fall directly in line with differences in state party majorities/voting. For instance in the 2012 presidential elections, Arizona voted for the Republican candidate (Mitt Romney) and it also had one of the most diverse state legislatures. Conversely, Colorado, Minnesota and Wisconsin all voted for the Democratic candidate (President Barack Obama) yet they had some of the least diverse state legislatures.
+
 ```{r diverse bigram graph, echo = FALSE, warning = FALSE, message = FALSE, fig.height = 10, fig.width = 10, fig.align = "center"}
 set.seed(2016)
 
@@ -92,6 +98,10 @@ ggraph(bigram_graph_diverse, layout = "fr") +
   theme_void()
 
 ```
+
+## Figure 2.
+
+Network of common ngrams that were selected from summaries of proposed bills (data scraped from [openstates.org](https://openstates.org/)) in states with diverse legislators. The bill summaries were collected for bills that were presented in either the state's House or Senate in the 2015 regular session. Data was collected from a subset of the three most diverse states: Arizona, New Mexico, and Maryland.
 
 
 ```{r not diverse bigram graph, echo = FALSE, warning = FALSE, message = FALSE, fig.height = 10, fig.width = 10, fig.align = "center"}
@@ -108,4 +118,11 @@ ggraph(bigram_graph_notdiverse, layout = "fr") +
 
 ```
 
+## Figure 3.
+
+Network of common ngrams that were selected from summaries of proposed bills (data scraped from [openstates.org](https://openstates.org/)) in states with the least diverse legislators. The bill summaries were collected for bills that were presented in either the state's House or Senate in the 2015 regular session. Data was collected from a subset of the three least diverse states: West Virginia, New Hampshire, and Tennessee.
+
+As shown in the ngram network, diverse state legislatures considered bills that focused on economic development, natural resources, income tax, and safety. Conversely, more uniform legislatures considered bills focused on retirement benefits, controlled substances, utilities, community development, and election laws. Both addressed bills on health and safety, alcoholic beverages, law enforcement, and motor vehicles.
+
+A caveat with these analyses is that the bills are not independent of each other and the unique effects of each state is likely influencing the data. Typically, I incorporate this non-independent structure with multi-level mixed models, where the variation from the random effect of state would be accounted for and the remaining variation could explain differences between diverse and uniform legislatures. Ideally, I need to create a way to adapt this multi-level approach for text analyses. 
 
