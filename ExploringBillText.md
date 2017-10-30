@@ -6,7 +6,7 @@ Exploring differences in bill text: do more diverse state legislatures propose d
 Figure 1.
 ---------
 
-Map of differences in Shannon diversity across state legislatures in 2015. Red represents low diversity and blue is high diversity. It is interesting to note that differences in legislature diversity do not fall directly in line with differences in state party majorities/voting. For instance in the 2012 presidential elections, Arizona voted for the Republican candidate (Mitt Romney) and it also had one of the most diverse state legislatures. Conversely, Colorado, Minnesota and Wisconsin all voted for the Democratic candidate (President Barack Obama) yet they had some of the least diverse state legislatures.
+Map of differences in Shannon diversity across state legislatures in 2015. Red represents low diversity and blue is high diversity. It is interesting to note that differences in legislature diversity do not fall directly in line with differences in state party majorities/control. For instance, Arizona's Congress was under Republican control and it also had one of the most diverse state legislatures. Conversely, Colorado, Minnesota and Oregon all had either Democrat-controlled or split legislatures in 2015, yet they had some of the least diverse state legislatures.
 
 <img src="ExploringBillText_files/figure-markdown_github/diverse bigram graph-1.png" style="display: block; margin: auto;" />
 
