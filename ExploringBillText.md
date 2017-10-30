@@ -13,14 +13,14 @@ Map of differences in Shannon diversity across state legislatures in 2015. Red r
 Figure 2.
 ---------
 
-Network of common ngrams that were selected from summaries of proposed bills (data scraped from [openstates.org](https://openstates.org/)) in states with diverse legislators. The bill summaries were collected for bills that were presented in either the state's House or Senate in the 2015 regular session. Data was collected from a subset of the three most diverse states: Arizona, New Mexico, and Maryland.
+Network of common ngrams that were selected from summaries of proposed bills (data scraped from [openstates.org](https://openstates.org/)) in states with diverse legislators. The bill summaries were collected for bills that were presented in either the state's House or Senate in the 2015 regular session. Data were collected from a subset of the three most diverse states: Arizona, New Mexico, and Maryland.
 
 <img src="ExploringBillText_files/figure-markdown_github/not diverse bigram graph-1.png" style="display: block; margin: auto;" />
 
 Figure 3.
 ---------
 
-Network of common ngrams that were selected from summaries of proposed bills (data scraped from [openstates.org](https://openstates.org/)) in states with the least diverse legislators. The bill summaries were collected for bills that were presented in either the state's House or Senate in the 2015 regular session. Data was collected from a subset of the three least diverse states: West Virginia, New Hampshire, and Tennessee.
+Network of common ngrams that were selected from summaries of proposed bills (data scraped from [openstates.org](https://openstates.org/)) in states with the least diverse legislators. The bill summaries were collected for bills that were presented in either the state's House or Senate in the 2015 regular session. Data were collected from a subset of the three least diverse states: West Virginia, New Hampshire, and Tennessee.
 
 As shown in the ngram networks, diverse state legislatures considered bills that focused on economic development, natural resources, income tax, and safety. Conversely, more uniform legislatures considered bills focused on retirement benefits, controlled substances, utilities, community development, Title IV (federal financial aid funds) and election laws. Both addressed bills on health and safety, alcoholic beverages, law enforcement, workers compensation, and motor vehicles.
 
