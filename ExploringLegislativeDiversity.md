@@ -17,7 +17,10 @@ Figure 1.
 
 Heatmap that compares the euclidean distance between pairs of state legislatures (both House and Senate in 2015) in terms of diversity. Red indicates that the two states have different legislature diversity while blue indicates that the states have similar legislature diversity. The states are also clustered, showing that Hawaii's Congress is an outlier, while the other states are split fairly evenly between two groups. This grouping appears to correspond with overall diversity (as calculated by Shannon index, described below); states in the upper right group tend to be more diverse, while states in the lower left group tend to be less diverse.
 
-<img src="ExploringLegislativeDiversity_files/figure-markdown_github/nmds plot-1.png" style="display: block; margin: auto;" /> \#\# Figure 2.
+<img src="ExploringLegislativeDiversity_files/figure-markdown_github/nmds plot-1.png" style="display: block; margin: auto;" />
+
+Figure 2.
+---------
 
 Nonmetric multidimensional scaling (NMDS) of the above euclidean distance matrix. State legislatures are color coded based on their Shannon diversity index (red = low, blue = high). Shannon diversity takes into account both richness of different categories that are present within the community and evenness across those categories. Gray vectors show the direction of the diversity categories and the strength of the correlation between the category and the NMDS ordination (longer vectors represent stronger correlations). Only significantly correlated vectors are shown.
 

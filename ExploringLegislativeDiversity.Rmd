@@ -115,6 +115,8 @@ plot(div.vec2, cex = 1, col = rgb(0,0,0, alpha = 0.5))}
 
 
 ```
+
+
 ## Figure 2.
 
 Nonmetric multidimensional scaling (NMDS) of the above euclidean distance matrix. State legislatures are color coded based on their Shannon diversity index (red = low, blue = high). Shannon diversity takes into account both richness of different categories that are present within the community and evenness across those categories. Gray vectors show the direction of the diversity categories and the strength of the correlation between the category and the NMDS ordination (longer vectors represent stronger correlations). Only significantly correlated vectors are shown. 
