@@ -15,6 +15,16 @@ library(vegan)
 div <- read.csv("state_legislative_diversity.csv")
 abbrev_state <- read.csv("state_abbreviations.csv")
 ```
+# Exploring diversity across states legislatures in 2015
+
+State legislature diversity data were collected from the [National Conference of State Legislatures](http://www.ncsl.org/research/about-state-legislatures/who-we-elect-an-interactive-graphic.aspx#). These data provide the proportion of each state Congress that belongs to particular categories:
+   * Generation (Millenials, GenX, Boomers, Silent, and Greatest)
+   * Male:Female
+   * Education level (high school, bachelors, advanced)
+   * Occupation (agriculture, business, attorney, etc.)
+   * Race (Native American, African American, Asian American, etc.)
+   * Religion (Protestant, Catholic, Unspecified)
+
 
 ```{r relationships, include = FALSE, warning = FALSE, message = FALSE}
 div2 <- div %>% 
@@ -38,6 +48,9 @@ heatmap(dismat, col  = palette, labCol = abbrev_state$text, labRow = abbrev_stat
 
 
 ```
+
+## Figure 1.
+Heatmap that compares the euclidean distance between pairs of state legislatures (both House and Senate in 2015) in terms of diversity. Red indicates that the two states have different legislature diversity while blue indicates that the states have similar legislature diversity. The states are also clustered, showing that Hawaii's Congress is an outlier, while the other states are split fairly evenly into two groups. This grouping appears to correspond with overall diversity (as calculated by Shannon index, described below); states in the upper right group tend to be more diverse, while states in the lower left group tend to be less diverse.
 
 
 ```{r nmds, warning=FALSE, message=FALSE, include = FALSE}
@@ -70,23 +83,23 @@ dimnames(div.vec2$vectors$arrows)[[1]] <- c("Advanced degree", "Female", "GenX",
                                             "Minorities", "White", "Protestant", 
                                             "Non Christian", "Unspecified religion")
                                             
-div2["shannon_index"] <- diversity(div2[ ,-1], index = "shannon", MARGIN = 1)
+#div2["shannon_index"] <- diversity(div2[ ,-1], index = "shannon", MARGIN = 1)
 shan_div <- diversity(div2[ ,-1], index = "shannon", MARGIN = 1)
 data.frame((shan_div))
-shan_div$State <- div2$States
-shan_div$Abbrev <- abbrev_state$text
+#shan_div$State <- div2$States
+#shan_div$Abbrev <- abbrev_state$text
 
 
 
 rbPal <- colorRampPalette(c("red", "blue"))
 div_col <- rbPal(10)[as.numeric(cut(shan_div, breaks = 10))]
 
-shan_div2 <- div2 %>% 
-  select(States, shannon_index)
-shan_div2$Abbrev <- abbrev_state$text
-write.csv(shan_div2, "shannon_div_state.csv")
+#shan_div2 <- div2 %>% 
+#  select(States, shannon_index)
+#shan_div2$Abbrev <- abbrev_state$text
+#write.csv(shan_div2, "shannon_div_state.csv")
 
-shan_div2 <- arrange(shan_div2, shan_div2$shannon_index)
+#shan_div2 <- arrange(shan_div2, shan_div2$shannon_index)
 ```
 
 
@@ -101,3 +114,8 @@ plot(div.vec2, cex = 1, col = rgb(0,0,0, alpha = 0.5))}
 
 
 ```
+## Figure 2.
+Nonmetric multidimensional scaling (NMDS) of the above euclidean distance matrix. State legislatures are color coded based on their Shannon diversity index (red = low, blue = high). Shannon diversity takes into account both richness of different categories that are present within the community and evenness across those categories. Gray vectors show the direction of the diversity categories and the strength of the correlation between the category and the NMDS ordination (longer vectors are stronger correlations). Only significanlty correlated vectors are shown. 
+
+As we can see, more diverse state legislatures (blue) have more minority and non Christian members. In addition these legislatures tend to be attorneys with advanced degrees in the GenX generation. Less diverse state legislatures (red) have more white (caucasian) members from the Baby Boomer generation. In addition these members tend to be business owners or in agriculture. Diversity categories that help explain variation across state legislatures but do not appear to influence Shannon diversity, include the proportion of members who are women, Protestant, and members with unspecified religious beliefs. Again, Hawaii's state legislature is shown as an outlier, likely since many members are Asian/Pacific Islander or multiracial. 
+
