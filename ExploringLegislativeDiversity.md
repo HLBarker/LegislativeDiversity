@@ -1,7 +1,14 @@
 Exploring diversity across states legislatures in 2015
 ======================================================
 
-State legislature diversity data were collected from the [National Conference of State Legislatures](http://www.ncsl.org/research/about-state-legislatures/who-we-elect-an-interactive-graphic.aspx#). These data provide the proportion of each state Congress that belongs to particular categories: \* Generation (Millenials, GenX, Boomers, Silent, and Greatest) \* Male:Female \* Education level (high school, bachelors, advanced) \* Occupation (agriculture, business, attorney, etc.) \* Race (Native American, African American, Asian American, etc.) \* Religion (Protestant, Catholic, Unspecified)
+State legislature diversity data were collected from the [National Conference of State Legislatures](http://www.ncsl.org/research/about-state-legislatures/who-we-elect-an-interactive-graphic.aspx#). These data provide the proportion of each state Congress that belongs to particular categories:
+
+-   Generation (Millenials, GenX, Boomers, Silent, and Greatest)
+-   Male:Female
+-   Education level (high school, bachelors, advanced)
+-   Occupation (agriculture, business, attorney, etc.)
+-   Race (Native American, African American, Asian American, etc.)
+-   Religion (Protestant, Catholic, Unspecified)
 
 <img src="ExploringLegislativeDiversity_files/figure-markdown_github/distance-1.png" style="display: block; margin: auto;" />
 
